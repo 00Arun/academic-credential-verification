@@ -44,15 +44,33 @@ function App() {
         {/* Main Content */}
         <Box
           component="main"
+          className="main-content layout-transition"
           sx={{
             flexGrow: 1,
             pt: { xs: 8, sm: 9 },
-            pl: { xs: 0, sm: 0, md: 0 },
             minHeight: '100vh',
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            transition: 'padding-left 0.3s ease-in-out',
+            width: { xs: '100%', md: 'calc(100% - 280px)' }, // Adjust width for sidebar
+            ml: { xs: 0, md: 0 }, // Remove margin-left as we're using padding
+            overflow: 'auto', // Handle content overflow
+            position: 'relative',
           }}
         >
-          <Container maxWidth="xl" sx={{ py: 3 }}>
+          <Container 
+            maxWidth={false}
+            className="full-width-container"
+            sx={{ 
+              py: 3, 
+              px: { xs: 2, sm: 3, md: 4 },
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              maxWidth: '100% !important',
+              margin: 0,
+            }}
+          >
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/issue" element={<IssueCredential />} />

@@ -29,7 +29,7 @@ contract AcademicCredential is Ownable {
     mapping(bytes32 => Credential) public credentials;
     
     // Mapping to track if a credential hash exists
-    mapping(bytes32 => bool) public credentialExists;
+    mapping(bytes32 => bool) public credentialHashExists;
     
     // Mapping to track university authorities
     mapping(address => bool) public universityAuthorities;
@@ -74,12 +74,12 @@ contract AcademicCredential is Ownable {
     }
 
     modifier credentialNotExists(bytes32 _credentialHash) {
-        require(!credentialExists[_credentialHash], "Credential already exists");
+        require(!credentialHashExists[_credentialHash], "Credential already exists");
         _;
     }
 
     modifier credentialExists(bytes32 _credentialHash) {
-        require(credentialExists[_credentialHash], "Credential does not exist");
+        require(credentialHashExists[_credentialHash], "Credential does not exist");
         _;
     }
 
@@ -126,7 +126,7 @@ contract AcademicCredential is Ownable {
         });
         
         credentials[credentialHash] = newCredential;
-        credentialExists[credentialHash] = true;
+        credentialHashExists[credentialHash] = true;
         allCredentialHashes.push(credentialHash);
         
         emit DegreeIssued(
@@ -154,7 +154,7 @@ contract AcademicCredential is Ownable {
     {
         bytes32 credentialHash = keccak256(abi.encodePacked(_credentialHash));
         
-        if (!credentialExists[credentialHash]) {
+        if (!credentialHashExists[credentialHash]) {
             return (false, Credential("", "", "", "", 0, "", true, 0, address(0)));
         }
         

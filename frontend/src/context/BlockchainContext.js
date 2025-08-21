@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
+import { CONFIG } from '../config';
 
 // Contract ABI - This will be imported from the compiled contract
 const CONTRACT_ABI = [
@@ -36,7 +37,7 @@ export const BlockchainProvider = ({ children }) => {
   const [contractAddress, setContractAddress] = useState(null);
 
   // Contract configuration
-  const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS || '0x5FbDB2315678afecb367f032d93F642f64180aa3'; // Default local address
+  const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS || CONFIG.contract.address; // Use config or environment variable
 
   // Initialize blockchain connection
   useEffect(() => {

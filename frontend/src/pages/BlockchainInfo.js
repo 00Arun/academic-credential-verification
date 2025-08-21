@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Card,
@@ -15,41 +15,29 @@ import {
   TableRow,
   Paper,
   Button,
-  useTheme,
-  useMediaQuery,
   CircularProgress,
   Alert,
-  Divider,
   Link,
   Tooltip,
 } from '@mui/material';
 import {
-  Blockchain as BlockchainIcon,
-  AccountBalanceWallet as WalletIcon,
+  AccountTree as BlockchainIcon,
   Security as SecurityIcon,
-  Info as InfoIcon,
   CheckCircle as CheckIcon,
   Warning as WarningIcon,
   Link as LinkIcon,
   Code as CodeIcon,
-  Storage as StorageIcon,
   Speed as SpeedIcon,
   TrendingUp as TrendingIcon,
-  School as SchoolIcon,
 } from '@mui/icons-material';
 import { useBlockchain } from '../context/BlockchainContext';
 import { ethers } from 'ethers';
 
 const BlockchainInfo = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { 
     isConnected, 
-    account, 
-    networkId, 
     contractAddress, 
     contract,
-    getTotalCredentials,
     getTotalCredentials
   } = useBlockchain();
   
@@ -65,13 +53,7 @@ const BlockchainInfo = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    if (isConnected && contract) {
-      loadBlockchainData();
-    }
-  }, [isConnected, contract]);
-
-  const loadBlockchainData = async () => {
+  const loadBlockchainData = useCallback(async () => {
     try {
       setIsLoading(true);
       setError('');
@@ -106,7 +88,13 @@ const BlockchainInfo = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [contract, contractAddress, getTotalCredentials]);
+
+  useEffect(() => {
+    if (isConnected && contract) {
+      loadBlockchainData();
+    }
+  }, [isConnected, contract, loadBlockchainData]);
 
   const getNetworkName = (chainId) => {
     switch (chainId) {
@@ -149,25 +137,6 @@ const BlockchainInfo = () => {
         return 'secondary';
       default:
         return 'default';
-    }
-  };
-
-  const getNetworkIcon = (chainId) => {
-    switch (chainId) {
-      case 1:
-        return '🔵';
-      case 5:
-      case 11155111:
-        return '🟡';
-      case 137:
-        return '🟣';
-      case 56:
-        return '🟠';
-      case 1337:
-      case 31337:
-        return '🟢';
-      default:
-        return '⚪';
     }
   };
 

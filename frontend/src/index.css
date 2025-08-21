@@ -123,3 +123,97 @@ code {
     transform: translateX(5px);
   }
 }
+
+/* Main Content Layout Fixes */
+
+@media (max-width: 900px) {
+  .MuiBox-root.css-1up5pin {
+    padding-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Ensure proper scrolling and layout */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Fix for sidebar overlay on mobile */
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* Smooth transitions for layout changes */
+.layout-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Container improvements */
+.MuiContainer-root {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.MuiContainer-maxWidthXl {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.css-3lkz12-MuiContainer-root {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+@media (min-width: 600px) {
+  .MuiContainer-root {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .MuiContainer-root {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+/* Full width container override */
+.MuiContainer-root.MuiContainer-maxWidthXl.css-3lkz12-MuiContainer-root {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Full width container class */
+.full-width-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.full-width-container.MuiContainer-root {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Override any Material-UI container constraints */
+.MuiContainer-root[class*="maxWidth"] {
+  max-width: 100% !important;
+}
+
+.MuiContainer-root[class*="css-"] {
+  max-width: 100% !important;
+  width: 100% !important;
+}

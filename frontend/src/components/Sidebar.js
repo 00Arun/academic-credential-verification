@@ -18,8 +18,7 @@ import {
   VerifiedUser as VerifyIcon,
   ListAlt as ListIcon,
   AccountBalance as UniversityIcon,
-  Blockchain as BlockchainIcon,
-  Home as HomeIcon,
+  Link as BlockchainIcon,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useBlockchain } from '../context/BlockchainContext';
@@ -224,6 +223,8 @@ const Sidebar = ({ open, onClose }) => {
               width: drawerWidth,
               background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(10px)',
+              borderRight: '1px solid rgba(255, 255, 255, 0.2)',
+              zIndex: 1300,
             },
           }}
         >
@@ -237,12 +238,18 @@ const Sidebar = ({ open, onClose }) => {
           variant="permanent"
           sx={{
             display: { xs: 'none', md: 'block' },
+            width: drawerWidth,
+            flexShrink: 0,
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
               background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(10px)',
               borderRight: '1px solid rgba(255, 255, 255, 0.2)',
+              position: 'fixed',
+              height: '100vh',
+              zIndex: 1200,
+              transition: 'transform 0.3s ease-in-out',
             },
           }}
           open

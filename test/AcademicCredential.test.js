@@ -79,7 +79,7 @@ describe("AcademicCredential", function () {
       ).to.emit(academicCredential, "DegreeIssued");
 
       const credentialHash = ethers.keccak256(ethers.toUtf8Bytes(credentialData.credentialHash));
-      expect(await academicCredential.credentialExists(credentialHash)).to.be.true;
+      expect(await academicCredential.credentialHashExists(credentialHash)).to.be.true;
     });
 
     it("Should not allow non-authority to issue credential", async function () {
@@ -321,16 +321,16 @@ describe("AcademicCredential", function () {
         credentialHash: "QmHash123456789"
       };
 
-      await expect(
-        academicCredential.connect(university1).issueCredential(
-          credentialData.studentName,
-          credentialData.universityName,
-          credentialData.degreeType,
-          credentialData.fieldOfStudy,
-          credentialData.graduationDate,
-          credentialData.credentialHash
-        )
-      ).to.emit(academicCredential, "DegreeIssued")
+      const tx = await academicCredential.connect(university1).issueCredential(
+        credentialData.studentName,
+        credentialData.universityName,
+        credentialData.degreeType,
+        credentialData.fieldOfStudy,
+        credentialData.graduationDate,
+        credentialData.credentialHash
+      );
+      
+      await expect(tx).to.emit(academicCredential, "DegreeIssued")
         .withArgs(
           ethers.keccak256(ethers.toUtf8Bytes(credentialData.credentialHash)),
           credentialData.studentName,

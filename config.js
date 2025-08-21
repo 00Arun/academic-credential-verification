@@ -1,5 +1,5 @@
 // Academic Credential Verification System Configuration
-// Copy this file to config.js and update with your values
+// Updated with user's wallet address
 
 module.exports = {
   // Smart Contract Configuration
