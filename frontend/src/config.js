@@ -2,7 +2,7 @@
 export const CONFIG = {
   // Contract Configuration
   contract: {
-    address: '0x4Ad02bDf82EC78D7D8c67F909Ce1e9667487bC30',
+    address: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
     networkId: 1337,
     networkName: 'Local Hardhat Network'
   },

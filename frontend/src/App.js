@@ -50,10 +50,9 @@ function App() {
             pt: { xs: 8, sm: 9 },
             minHeight: '100vh',
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            transition: 'padding-left 0.3s ease-in-out',
-            width: { xs: '100%', md: 'calc(100% - 280px)' }, // Adjust width for sidebar
-            ml: { xs: 0, md: 0 }, // Remove margin-left as we're using padding
-            overflow: 'auto', // Handle content overflow
+            transition: 'all 0.3s ease-in-out',
+            width: '100%',
+            overflow: 'auto',
             position: 'relative',
           }}
         >

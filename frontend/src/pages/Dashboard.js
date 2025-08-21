@@ -181,9 +181,9 @@ const Dashboard = () => {
           variant="h3"
           component="h1"
           sx={{
-            fontWeight: 700,
+            fontWeight: 800,
             mb: 2,
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'white',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',

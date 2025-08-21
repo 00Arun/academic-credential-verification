@@ -126,13 +126,6 @@ code {
 
 /* Main Content Layout Fixes */
 
-@media (max-width: 900px) {
-  .MuiBox-root.css-1up5pin {
-    padding-left: 0 !important;
-    width: 100% !important;
-  }
-}
-
 /* Ensure proper scrolling and layout */
 .main-content {
   display: flex;
@@ -140,14 +133,14 @@ code {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  width: 100% !important;
 }
 
-/* Fix for sidebar overlay on mobile */
-@media (max-width: 900px) {
-  .main-content {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-  }
+/* Full width layout for all screen sizes */
+.main-content {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: 100% !important;
 }
 
 /* Smooth transitions for layout changes */
